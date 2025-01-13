@@ -1,0 +1,14 @@
+!pip install pipeline
+from transformers import pipeline
+
+# Load a sentiment-analysis pipeline 
+sentiment_analyzer = pipeline('sentiment-analysis')
+
+def analyze_sentiment(text): 
+# Analyze sentiment
+result = sentiment_analyzer(text) return result
+
+if __name__== "_main_":
+  text = "I love using natural language processing to analyze text data!"
+sentiment = analyze_sentiment(text) 
+print(sentiment)
