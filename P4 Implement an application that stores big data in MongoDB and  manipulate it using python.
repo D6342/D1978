@@ -1,0 +1,56 @@
+// Start MongoDB shell and list all databases
+show dbs
+
+// Switch to the 'Avengers' database (creates it if it doesn't exist)
+use Avengers
+
+// Insert student records into the 'student' collection
+db.student.insertMany([
+    { Id: '1', Name: 'Dhiraj', Address: 'Nallasopara', Class: 'IT' },
+    { Id: '2', Name: 'Anand', Address: 'Borivali', Class: 'CS' },
+    { Id: '3', Name: 'Rahul', Address: 'Kandivali', Class: 'Commerce' },
+    { Id: '4', Name: 'Om', Address: 'Dahisar', Class: 'IT' },
+    { Id: '5', Name: 'Mohan', Address: 'Andheri', Class: 'DS' }
+])
+
+// Show all collections in the current database
+show collections
+
+// Display all documents in the 'student' collection
+db.student.find().pretty()
+
+
+
+
+Python Code
+
+from pymongo import MongoClient
+
+client = MongoClient('localhost:27017')
+db = client.Avengers
+records = db.student
+
+print("Original Data")
+for v in records.find():
+    print(v)
+
+myquery = {"id": 1}
+newvalues = {"$set": {"address": "Scranton"}}
+records.update_one(myquery, newvalues)
+print("Update Successful!!")
+print("Updated Data")
+for v in records.find():
+    print(v)
+
+mysql = {"id": 7, "name": "Alexa", "address": "Andheri", "phno": 7470458774}
+x = records.insert_one(mysql)
+print("Insertion Successful!!")
+print("New Data")
+for v in records.find():
+    print(v)
+
+y = records.delete_one({"id": 2})
+print("Deletion Successful!!")
+print("Final Data")
+for v in records.find():
+    print(v)
