@@ -1,9 +1,0 @@
-!pip install diffusers
-from diffusers import StableDiffusionPipeline 
-import torch
-model_id = "runwayml/stable-diffusion-v1-5"
-pipe = StableDiffusionPipeline.from_pretrained(model_id, torch_dtype=torch.float32)
-
-prompt = "A futuristic cityscape at sunset with flying cars"
-image = pipe(prompt).images[0] 
-image.save(f"generated_image{prompt}.png")
